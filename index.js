@@ -1,22 +1,40 @@
 const Hapi = require('hapi')
+const HapiPino = require('hapi-pino')
 
 const server = new Hapi.Server()
 
-async function provision () {
-    server.connection({
-        port: 3001
-    })
+function provision () {
+    return new Promise((fulfill, reject) => {
+        server.connection({
+            port: 3001
+        })
 
-    server.start((error) => {
-        if (error) {
-            return console.error(error)
-        }
+        server.register(HapiPino, (error) => {
+            if(error) {
+                return reject(error)
+            }
 
-        console.log("Ocomis User UI service started.")
-        console.log("Service running at: " + server.info.uri)
+            server.start((error) => {
+                if (error) {
+                    return reject(error)
+                }
+
+                fulfill()
+            })
+        })
     })
 }
 
-provision()
+provision().then(() => {
+    server.logger().info('Ocomis User UI service started.')
+    server.logger().info(`Service running at: ${server.info.uri}`)
+}).catch((error) => {
+    if(typeof(server.logger) === 'function') {
+        server.logger().error(`Ocomis User UI service start failed: ${error}`)
+    }
+    else {
+        console.error(error)
+    }
+})
 
 module.exports = server // only for testing

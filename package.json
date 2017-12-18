@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.js | ./node_modules/.bin/pino-socket -a ocomis-logging-logstash -p 5000 -m tcp",
     "test": "./node_modules/.bin/lab -I '__core-js_shared__' test/**",
     "eslint": "./node_modules/.bin/eslint index.js lib/** migrations/** test/**"
   },
@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/DevRobert/ocomis-user-ui#readme",
   "dependencies": {
-    "hapi": "^16.6.2"
+    "hapi": "^16.6.2",
+    "hapi-pino": "^2.1.0",
+    "pino": "^4.10.2",
+    "pino-socket": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^4.12.1",
