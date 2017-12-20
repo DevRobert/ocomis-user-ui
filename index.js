@@ -1,4 +1,5 @@
 const Hapi = require('hapi')
+const pino = require('pino')
 const HapiPino = require('hapi-pino')
 
 const server = new Hapi.Server()
@@ -9,7 +10,16 @@ function provision () {
             port: 3001
         })
 
-        server.register(HapiPino, (error) => {
+        const logger = pino().child({
+            service: 'ocomis-user-ui'
+        })
+
+        server.register({
+            register: HapiPino,
+            options: {
+                instance: logger
+            }
+        }, (error) => {
             if (error) {
                 return reject(error)
             }
