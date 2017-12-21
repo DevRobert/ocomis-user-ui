@@ -1,6 +1,6 @@
 const Hapi = require('hapi')
-const pino = require('pino')
 const HapiPino = require('hapi-pino')
+const logger = require('./lib/logger')
 
 const server = new Hapi.Server()
 
@@ -8,10 +8,6 @@ function provision () {
     return new Promise((resolve, reject) => {
         server.connection({
             port: 3001
-        })
-
-        const logger = pino().child({
-            service: 'ocomis-user-ui'
         })
 
         server.register({
@@ -36,15 +32,10 @@ function provision () {
 }
 
 provision().then(() => {
-    server.logger().info('Ocomis User UI service started.')
-    server.logger().info(`Service running at: ${server.info.uri}`)
+    logger.info('Ocomis User UI service started.')
+    logger.info(`Service running at: ${server.info.uri}`)
 }).catch((error) => {
-    if (typeof (server.logger) === 'function') {
-        server.logger().error(`Ocomis User UI service start failed: ${error}`)
-    }
-    else {
-        console.error(error)
-    }
+    logger.error(`Ocomis User UI service start failed: ${error}`)
 })
 
 module.exports = server // only for testing
