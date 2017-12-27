@@ -1,6 +1,8 @@
 const Hapi = require('hapi')
 const HapiPino = require('hapi-pino')
 const logger = require('./lib/logger')
+const Routes = require('./lib/routes')
+const Inert = require('inert')
 
 const server = new Hapi.Server()
 
@@ -10,15 +12,17 @@ function provision () {
             port: 3001
         })
 
-        server.register({
+        server.register([{
             register: HapiPino,
             options: {
                 instance: logger
             }
-        }, (error) => {
+        }, Inert ], (error) => {
             if (error) {
                 return reject(error)
             }
+
+            server.route(Routes)
 
             server.start((error) => {
                 if (error) {

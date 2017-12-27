@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js | ./node_modules/.bin/pino-socket -a ocomis-logging-logstash -p 5000 -m tcp",
     "test": "./node_modules/.bin/lab -I '__core-js_shared__' test/**",
-    "eslint": "./node_modules/.bin/eslint index.js lib/** migrations/** test/**"
+    "eslint": "./node_modules/.bin/eslint index.js lib/** migrations/** test/**",
+    "compile": "webpack"
   },
   "repository": {
     "type": "git",
@@ -19,17 +20,26 @@
   },
   "homepage": "https://github.com/DevRobert/ocomis-user-ui#readme",
   "dependencies": {
+    "chalk": "^2.3.0",
     "hapi": "^16.6.2",
     "hapi-pino": "^2.1.0",
+    "inert": "^4.2.1",
     "pino": "^4.10.2",
-    "pino-socket": "^1.0.1"
+    "pino-socket": "^1.0.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "eslint": "^4.12.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "webpack": "^3.10.0"
   }
 }
