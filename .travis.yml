@@ -10,7 +10,10 @@ services:
 
 script:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  - ./Build.sh
+  - npm run compile
+  - npm test
+  - npm run eslint
+  - docker build -t "blutner/ocomis-user-ui:latest" .
   - docker tag "blutner/ocomis-user-ui:latest" "blutner/ocomis-user-ui:$TRAVIS_COMMIT"
   - docker push "blutner/ocomis-user-ui:$TRAVIS_COMMIT"
   - docker push "blutner/ocomis-user-ui:latest"
