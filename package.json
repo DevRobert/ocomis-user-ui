@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/DevRobert/ocomis-user-ui#readme",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "chalk": "^2.3.0",
     "hapi": "^16.6.2",
     "hapi-pino": "^2.1.0",
@@ -50,6 +51,10 @@
     "eslint-plugin-standard": "^3.0.1",
     "lab": "^15.1.2",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-server": "^2.9.7",
+    "style-loader": "^0.19.1",
+    "url-loader": "^0.6.2",
+    "css-loader": "^0.28.8",
+    "file-loader": "^1.1.6"
   }
 }
