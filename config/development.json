@@ -1,0 +1,7 @@
+{
+    "apis": {
+        "user": {
+            "uri": "http://localhost/user/api"
+        }
+    }
+}

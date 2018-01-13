@@ -5,5 +5,8 @@ module.exports = {
     },
     "plugins": [
         "react"
-    ]
+    ],
+    "env": {
+        "browser": true
+    }
 };

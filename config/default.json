@@ -1,0 +1,7 @@
+{
+    "apis": {
+        "user": {
+            "uri": "http://ocomis-authentication-api:3004/user/api"
+        }
+    }
+}

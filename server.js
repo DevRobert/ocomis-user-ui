@@ -1,7 +1,7 @@
 const Hapi = require('hapi')
 const HapiPino = require('hapi-pino')
-const logger = require('./lib/logger')
-const Routes = require('./lib/routes')
+const logger = require('./lib/server/logger')
+const Routes = require('./lib/server/routes')
 const Inert = require('inert')
 
 const server = new Hapi.Server()
