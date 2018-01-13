@@ -43,6 +43,10 @@ And then open `http://localhost:3001/user/Users`.
     * hasPassword
     * isLoading
     * errorMessage
+    * showSetPassword
+    * setPassword
+        * isSubmitting
+        * errorMessage
 * create
     * name
     * isSubmitting
