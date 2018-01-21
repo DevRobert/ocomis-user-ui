@@ -45,6 +45,11 @@ And then open `http://localhost:3001/user/Users`.
     * errorMessage
     * showSetPassword
     * setPassword
+        * isVisible
+        * isSubmitting
+        * errorMessage
+    * removePassword
+        * isVisible
         * isSubmitting
         * errorMessage
 * create
